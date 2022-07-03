@@ -1,0 +1,30 @@
+# version 1.0
+
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+touch ~/.rosversion
+
+if [ $# -ne 0 ]
+  then
+    if [ $1 -eq 1 ]
+    	then
+		echo "noetic" > ~/.rosversion
+    elif [ $1 -eq 2 ]
+    	then
+    		#
+		echo "galactic" > ~/.rosversion
+    fi
+    echo "Please start a new terminal for changes to take effect"
+else
+		source /opt/ros/`cat ~/.rosversion`/setup.bash
+		if [ $(cat ~/.rosversion) == noetic ]
+			then
+				#enter commands you want to execute with noetic installation here
+					
+		elif
+				#enter commands you want to execute with galactic installation here
+		fi
+		echo "Currently ROS `cat ~/.rosversion` is sourced"
+	fi
+

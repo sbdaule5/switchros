@@ -1,4 +1,4 @@
-# version 1.1
+# version 1.2
 
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
@@ -7,27 +7,39 @@ touch ~/.rosversion
 
 if [ $# -ne 0 ]
   then
-    if [ $1 -eq 1 ]
+    if [ $1 == 1 ]
     	then
 		echo "noetic" > ~/.rosversion
-    elif [ $1 -eq 2 ]
+    elif [ $1 == 2 ]
     	then
 		echo "galactic" > ~/.rosversion
+    elif [ $1 == 0 ]
+    	then
+    		echo "none" > ~/.rosversion
+    else 
+    		echo $1 > ~/.rosversion
     fi
     echo "Please start a new terminal for changes to take effect"
 else
-		source /opt/ros/`cat ~/.rosversion`/setup.bash
+		
 	if [ $(cat ~/.rosversion) == noetic ]
 		then
+		source /opt/ros/`cat ~/.rosversion`/setup.bash
 		#enter commands you want to execute with noetic installation here
 			
-			
+		
 		echo "Currently ROS `cat ~/.rosversion` is sourced"	
 	elif [ $(cat ~/.rosversion) == galactic ]
 		then
+		source /opt/ros/`cat ~/.rosversion`/setup.bash
 		#enter commands you want to execute with galactic installation here
-				
-				
+
+		source /usr/share/colcon_cd/function/colcon_cd.sh
+		export _colcon_cd_root=/opt/ros/galactic/
+		source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash		
+			
 		echo "Currently ROS `cat ~/.rosversion` is sourced"
+	else
+		echo "Currently ROS is not sourced" 
 	fi
 fi

@@ -4,12 +4,16 @@ Copy the file switchros into your `.local` folder (`~/.local`) or any other plac
 `export PATH=~/.local:$PATH` <br>
 `. switchros`
 <br><br>
-Also do not forget to remove/comment any source commands you have added your `.bashrc` file
+Also do not forget to remove/comment any source commands you have added your `.bashrc` file for sourcing ROS.
 ## 2. Usage 
 
 To switch ROS version, enter the following command in terminal: <br>
 `switchros <version>` <br>
 Where version is the version of ros you want to use.
+
+You can also use: <br>
+`switchros <destro>` <br>
+Where destro is the name of ros destro you want to use.
 
 ---
 ### Additional Notes
